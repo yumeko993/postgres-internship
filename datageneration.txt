@@ -1,0 +1,5 @@
+INSERT INTO STUDENTS(s_id, name, start_year) SELECT ID, 'student_'||ID::TEXT, floor (random() * (2020 - 2015 + 1))+2015 FROM GENERATE_SERIES(1, 5) AS ID;
+
+INSERT INTO Courses(c_no, title, hours) SELECT ID, 'course_'||ID::TEXT, floor (random() * (150 - 140 + 1))+140 FROM GENERATE_SERIES(1, 5) AS ID;
+
+INSERT INTO Exams(s_id, c_no, score) SELECT STUDENTS.s_id, Courses.c_no, floor (random() * (5 - 1 + 1))+1 FROM STUDENTS, Courses;
